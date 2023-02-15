@@ -10,7 +10,7 @@ array.forEach(el => {
      event.preventDefault()
      const tooltipActive = el.getElementsByClassName('tooltip')
      const text = el.getAttribute('title')
-
+     const coord = el.getBoundingClientRect()
       if (tooltipActive[0] == undefined){
           el.insertAdjacentHTML('beforeEnd', `<div class="tooltip">${text}</div>`)
           console.log(1)
@@ -22,7 +22,8 @@ array.forEach(el => {
       
       else {
           tooltipActive[0].classList.add('tooltip_active')
-          console.log(2)
+          tooltipActive[0].style.left = coord.left + 'px'
+          tooltipActive[0].style.top = coord.bottom + 'px'
       }
          
    }
